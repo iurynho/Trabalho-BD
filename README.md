@@ -1,30 +1,73 @@
-# Sistema de Gestão Empresarial - Banco de Dados
+# Sistema de Gestão Empresarial
 
-Este projeto define um banco de dados relacional completo para um sistema de gestão empresarial, contendo estruturas para controle de usuários, funcionários, férias, produtos, fornecedores, clientes, vendas e compras.
+## Descrição do Projeto
 
-## 🛠 Estrutura do Banco de Dados
+Este projeto é um sistema básico para gestão empresarial que inclui o controle de:
 
-O banco de dados `sistema_empresa` é composto pelas seguintes tabelas:
+- Usuários
+- Funcionários
+- Produtos
+- Fornecedores
+- Clientes
+- Vendas
+- Compras
 
-- **usuarios**: Armazena os dados de acesso dos usuários do sistema.
-- **funcionarios**: Contém informações pessoais e contratuais dos funcionários.
-- **ferias**: Controla os períodos de férias dos funcionários.
-- **produtos**: Contém os itens vendidos ou comprados pela empresa.
-- **fornecedores**: Registra os fornecedores de produtos.
-- **clientes**: Guarda os dados dos clientes que realizam compras.
-- **vendas**: Armazena os registros de vendas realizadas.
-- **itens_venda**: Detalha os produtos vendidos em cada venda.
-- **compras**: Armazena os registros de compras feitas pela empresa.
-- **itens_compra**: Detalha os produtos adquiridos em cada compra.
+O backend é desenvolvido em Java, utilizando DAOs para realizar operações CRUD no banco de dados MySQL.
 
-## ▶️ Como usar
+Além das operações básicas, o sistema possui consultas SQL para gerar relatórios gerenciais importantes.
 
-1. **Requisitos**:  
-   - Servidor MySQL ou MariaDB
-   - Ferramenta cliente como MySQL Workbench, DBeaver ou terminal
+---
 
-2. **Execução**:  
-   Basta importar o arquivo `script_completo_com_insercoes.sql` no seu SGBD. Ele criará o banco de dados, as tabelas e preencherá com dados de exemplo.
+## Configuração do Banco de Dados
 
-   ```sql
-   SOURCE caminho/para/script_completo_com_insercoes.sql;
+### 1. Criação das tabelas
+
+Execute o script SQL `create_tables.sql` para criar todas as tabelas do banco:
+
+- `usuarios`
+- `funcionarios`
+- `produtos`
+- `fornecedores`
+- `clientes`
+- `vendas`
+- `itens_venda`
+- `compras`
+- `itens_compra`
+
+### 2. Inserção de dados
+
+Execute o script `insert_data.sql` para popular as tabelas com dados iniciais de exemplo.
+
+---
+
+## DAOs Java
+
+No pacote `dao`, existem classes que implementam o padrão DAO para manipular os dados das tabelas.
+
+### Classes principais
+
+- `UsuarioDAO`: CRUD para a tabela `usuarios`
+- `FuncionarioDAO`: CRUD para a tabela `funcionarios`
+- (Outros DAOs podem ser criados seguindo o mesmo padrão para as demais tabelas)
+
+### Exemplos de uso
+
+```java
+// Criar conexão
+Connection conn = DriverManager.getConnection(dbUrl, user, password);
+
+// Instanciar DAO
+FuncionarioDAO funcionarioDAO = new FuncionarioDAO(conn);
+
+// Inserir funcionário
+funcionarioDAO.inserirFuncionario("João Silva", "12345678900", "Analista", Date.valueOf("2023-01-15"), Date.valueOf("2023-01-20"));
+
+// Listar funcionários
+List<String> lista = funcionarioDAO.listarFuncionarios();
+lista.forEach(System.out::println);
+
+// Atualizar cargo
+funcionarioDAO.atualizarCargo(1, "Gerente");
+
+// Deletar funcionário
+funcionarioDAO.deletarFuncionario(1);
