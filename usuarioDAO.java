@@ -29,14 +29,14 @@ public class UsuarioDAO {
     // READ
     public List<String> listarUsuarios() {
         List<String> usuarios = new ArrayList<>();
-        String sql = "SELECT FROM usuarios";
+        String sql = "SELECT * FROM usuarios";
         try (Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 usuarios.add("ID: " + rs.getInt("id_usuario") +
                              ", Nome: " + rs.getString("nome") +
                              ", Email: " + rs.getString("email") +
-                             ", Data Cadastro: " + rs.getDate("_cadastro"));
+                             ", Data Cadastro: " + rs.getDate("data_cadastro"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class UsuarioDAO {
         String sql = "UPDATE usuarios SET email = ? WHERE id_usuario = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, novoEmail);
-           .setInt(2, id);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
             System.out.println("Usuário atualizado com sucesso!");
         } catch (SQLException e) {
@@ -61,7 +61,7 @@ public class UsuarioDAO {
     public void deletarUsuario(int id) {
         String sql = "DELETE FROM usuarios WHERE id_usuario = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1 id);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
             System.out.println("Usuário deletado com sucesso!");
         } catch (SQLException e) {
