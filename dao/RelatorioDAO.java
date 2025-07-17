@@ -138,8 +138,7 @@ public class RelatorioDAO {
 
     public void relatorioFuncoesData() {
         System.out.println("\nRelatório: Vendas realizadas nos últimos 30 dias");
-        String sql = "SELECT id_venda, data_venda FROM vendas WHERE data_venda >= CURRENT_DATE - INTERVAL '30 days'";
-
+        String sql = "SELECT id_venda, data_venda FROM vendas WHERE data_venda >= DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)";
         try (PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -171,7 +170,7 @@ public class RelatorioDAO {
 
     public void relatorioProdutosRecentes() {
         System.out.println("\nRelatório: Produtos cadastrados no último mês");
-        String sql = "SELECT nome, data_cadastro FROM produtos WHERE data_cadastro >= CURRENT_DATE - INTERVAL '30 days'";
+        String sql = "SELECT nome, data_cadastro FROM produtos WHERE data_cadastro >= DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -227,7 +226,7 @@ public class RelatorioDAO {
         System.out.println("\nRelatório: Clientes que não fizeram compras nos últimos 6 meses");
 
         String sql = "SELECT nome FROM clientes WHERE id_cliente NOT IN (" +
-                     "SELECT DISTINCT id_cliente FROM vendas WHERE data_venda >= CURRENT_DATE - INTERVAL '6 months'" +
+                     "SELECT DISTINCT id_cliente FROM vendas WHERE data_venda >= DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH)" +
                      ")";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql);
