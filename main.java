@@ -65,7 +65,7 @@ public class Main {
                                 usuarioDAO.deletarUsuario(idUsuarioDeletar);
                                 break;
                             default:
-                                System.out.println("Opcao inválida!");
+                                System.out.println("Opcao invalida!");
                         }
 
                         break;
@@ -76,7 +76,7 @@ public class Main {
                         System.out.println("2. Listar Funcionarios");
                         System.out.println("3. Atualizar Cargo");
                         System.out.println("4. Deletar Funcionario");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoFuncionario = scanner.nextInt();
                         scanner.nextLine();
 
@@ -169,7 +169,7 @@ public class Main {
                                 relatorioDAO.relatorioClientesSemCompraRecente();
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("opcao invalida!");
                         }
                         break;
                     }
@@ -179,7 +179,7 @@ public class Main {
                         System.out.println("\n=== GERENCIAR VENDAS ===");
                         System.out.println("1. Inserir Venda");
                         System.out.println("2. Listar Vendas");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoVenda = scanner.nextInt();
                         scanner.nextLine();
 
@@ -205,7 +205,7 @@ public class Main {
                         } else if (opcaoVenda == 2) {
                             vendaDAO.listarVendas();
                         } else {
-                            System.out.println("Opção inválida!");
+                            System.out.println("opcao invalida!");
                         }
                         break;
 
@@ -216,7 +216,7 @@ public class Main {
                         System.out.println("2. Listar Ferias");
                         System.out.println("3. Atualizar Ferias");
                         System.out.println("4. Deletar Ferias");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoFerias = scanner.nextInt();
                         scanner.nextLine();
 
@@ -250,7 +250,7 @@ public class Main {
                                 feriasDAO.deletarFerias(idFeriasDeletar);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("opcao invalida!");
                         }
                         break;
 
@@ -261,7 +261,7 @@ public class Main {
                         System.out.println("2. Listar Compras");
                         System.out.println("3. Atualizar Compra");
                         System.out.println("4. Deletar Compra");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoCompra = scanner.nextInt();
                         scanner.nextLine();
 
@@ -297,7 +297,7 @@ public class Main {
                                 compraDAO.deletarCompra(idCompraDeletar);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("opcao invalida!");
                         }
                         break;
 
@@ -308,7 +308,7 @@ public class Main {
                         System.out.println("2. Listar Fornecedores");
                         System.out.println("3. Atualizar Fornecedor");
                         System.out.println("4. Deletar Fornecedor");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoFornecedor = scanner.nextInt();
                         scanner.nextLine();
 
@@ -337,7 +337,7 @@ public class Main {
                                 fornecedorDAO.deletarFornecedor(idFornecedorDeletar);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("opcao invalida!");
                         }
                         break;
 
@@ -348,7 +348,7 @@ public class Main {
                         System.out.println("2. Listar Produtos");
                         System.out.println("3. Atualizar Produto");
                         System.out.println("4. Deletar Produto");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoProduto = scanner.nextInt();
                         scanner.nextLine();
 
@@ -381,7 +381,7 @@ public class Main {
                                 produtoDAO.deletarProduto(idProdutoDeletar);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("opcao invalida!");
                         }
                         break;
 
@@ -391,7 +391,7 @@ public class Main {
                         return;
 
                     default:
-                        System.out.println("Opção inválida!");
+                        System.out.println("opcao invalida!");
                 }
             }
 
