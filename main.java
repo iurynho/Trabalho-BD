@@ -14,20 +14,20 @@ public class Main {
 
             while (true) {
                 System.out.println("\n=== MENU PRINCIPAL ===");
-                System.out.println("1. Gerenciar Usuários");
-                System.out.println("2. Gerenciar Funcionários");
-                System.out.println("3. Gerar Relatórios");
+                System.out.println("1. Gerenciar Usuarios");
+                System.out.println("2. Gerenciar Funcionarios");
+                System.out.println("3. Gerar Relatorios");
                 System.out.println("0. Sair");
                 System.out.print("Escolha uma opção: ");
                 int opcao = scanner.nextInt();
 
                 switch (opcao) {
                     case 1:
-                        System.out.println("\n=== GERENCIAR USUÁRIOS ===");
-                        System.out.println("1. Inserir Usuário");
-                        System.out.println("2. Listar Usuários");
-                        System.out.println("3. Atualizar Usuário");
-                        System.out.println("4. Deletar Usuário");
+                        System.out.println("\n=== GERENCIAR USUARIOS ===");
+                        System.out.println("1. Inserir Usuario");
+                        System.out.println("2. Listar Usuarios");
+                        System.out.println("3. Atualizar Usuario");
+                        System.out.println("4. Deletar Usuario");
                         System.out.print("Escolha uma opção: ");
                         int opcaoUsuario = scanner.nextInt();
 
@@ -50,18 +50,18 @@ public class Main {
                             String novoEmail = scanner.nextLine();
                             usuarioDAO.atualizarUsuario(id, novoEmail);
                         } else if (opcaoUsuario == 4) {
-                            System.out.print("ID do Usuário: ");
+                            System.out.print("ID do Usuario: ");
                             int id = scanner.nextInt();
                             usuarioDAO.deletarUsuario(id);
                         } else {
-                            System.out.println("Opção inválida!");
+                            System.out.println("Opção invalida!");
                         }
                         break;
 
                     case 2:
-                        System.out.println("\n=== GERENCIAR FUNCIONÁRIOS ===");
-                        System.out.println("1. Inserir Funcionário");
-                        System.out.println("2. Listar Funcionários");
+                        System.out.println("\n=== GERENCIAR FUNCIONARIOS ===");
+                        System.out.println("1. Inserir Funcionario");
+                        System.out.println("2. Listar Funcionarios");
                         System.out.println("3. Atualizar Cargo");
                         System.out.println("4. Deletar Funcionário");
                         System.out.print("Escolha uma opção: ");
@@ -95,10 +95,10 @@ public class Main {
                         break;
 
                     case 3:
-                        System.out.println("\n=== RELATÓRIOS DISPONÍVEIS ===");
+                        System.out.println("\n=== RELATORIOS DISPONIVEIS ===");
                         System.out.println("1. Vendas com Clientes e Produtos (JOIN)");
-                        System.out.println("2. Relatório com Group By");
-                        System.out.println("3. Relatório com Funções de Data");
+                        System.out.println("2. Relatorio com Group By");
+                        System.out.println("3. Relatorio com Funcoes de Data");
                         System.out.println("4. Consulta Aninhada");
                         System.out.print("Escolha uma opção: ");
                         int opcaoRelatorio = scanner.nextInt();
@@ -128,7 +128,7 @@ public class Main {
                         return;
 
                     default:
-                        System.out.println("Opção inválida!");
+                        System.out.println("Opção invalida!");
                 }
             }
         } catch (Exception e) {
