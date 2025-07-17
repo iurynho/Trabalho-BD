@@ -1,16 +1,20 @@
+Claro! Aqui está um README completo, baseado no seu modelo, que explica o projeto, configuração, e como compilar e rodar o sistema Java:
+
+---
+
 # Sistema de Gestão Empresarial
 
 ## Descrição do Projeto
 
 Este projeto é um sistema básico para gestão empresarial que inclui o controle de:
 
-- Usuários
-- Funcionários
-- Produtos
-- Fornecedores
-- Clientes
-- Vendas
-- Compras
+* Usuários
+* Funcionários
+* Produtos
+* Fornecedores
+* Clientes
+* Vendas
+* Compras
 
 O backend é desenvolvido em Java, utilizando DAOs para realizar operações CRUD no banco de dados MySQL.
 
@@ -24,15 +28,15 @@ Além das operações básicas, o sistema possui consultas SQL para gerar relat�
 
 Execute o script SQL `create_tables.sql` para criar todas as tabelas do banco:
 
-- `usuarios`
-- `funcionarios`
-- `produtos`
-- `fornecedores`
-- `clientes`
-- `vendas`
-- `itens_venda`
-- `compras`
-- `itens_compra`
+* `usuarios`
+* `funcionarios`
+* `produtos`
+* `fornecedores`
+* `clientes`
+* `vendas`
+* `itens_venda`
+* `compras`
+* `itens_compra`
 
 ### 2. Inserção de dados
 
@@ -46,9 +50,14 @@ No pacote `dao`, existem classes que implementam o padrão DAO para manipular os
 
 ### Classes principais
 
-- `UsuarioDAO`: CRUD para a tabela `usuarios`
-- `FuncionarioDAO`: CRUD para a tabela `funcionarios`
-- (Outros DAOs podem ser criados seguindo o mesmo padrão para as demais tabelas)
+* `UsuarioDAO`: CRUD para a tabela `usuarios`
+* `FuncionarioDAO`: CRUD para a tabela `funcionarios`
+* `ProdutoDAO`: CRUD para a tabela `produtos`
+* `FornecedorDAO`: CRUD para a tabela `fornecedores`
+* `VendaDAO`: Gerenciamento de vendas e itens de venda, incluindo atualização do estoque
+* `CompraDAO`: Gerenciamento de compras e itens de compra
+* `FeriasDAO`: Controle de férias dos funcionários
+* `RelatorioDAO`: Consultas complexas e relatórios
 
 ### Exemplos de uso
 
@@ -71,3 +80,71 @@ funcionarioDAO.atualizarCargo(1, "Gerente");
 
 // Deletar funcionário
 funcionarioDAO.deletarFuncionario(1);
+```
+
+---
+
+## Como Compilar e Executar
+
+### Pré-requisitos
+
+* Java JDK 8 ou superior instalado
+* MySQL instalado e rodando
+* Configurar as credenciais do banco de dados no arquivo `ConexaoBanco.java`
+
+### Passos para compilar
+
+1. Compile as classes Java (assumindo que você está na pasta `src`):
+
+```bash
+javac -d ../bin dao/*.java Main.java
+```
+
+2. Execute o programa (estando na pasta `bin`):
+
+```bash
+java Main
+```
+
+### Configuração da conexão
+
+No arquivo `ConexaoBanco.java`, configure:
+
+```java
+private static final String URL = "jdbc:mysql://localhost:3306/sistema_empresa";
+private static final String USER = "seu_usuario";
+private static final String PASSWORD = "sua_senha";
+```
+
+---
+
+## Estrutura do Projeto
+
+```
+/src
+  /dao
+    UsuarioDAO.java
+    FuncionarioDAO.java
+    ProdutoDAO.java
+    FornecedorDAO.java
+    VendaDAO.java
+    CompraDAO.java
+    FeriasDAO.java
+    RelatorioDAO.java
+  ConexaoBanco.java
+  Main.java
+/scripts
+  create_tables.sql
+  insert_data.sql
+```
+
+---
+
+## Observações Finais
+
+* O sistema possui tratamento básico de erros e validação das entradas pelo console.
+* As transações são usadas para operações que modificam várias tabelas (como vendas).
+* Os menus são organizados por módulos para facilitar a navegação.
+
+---
+
