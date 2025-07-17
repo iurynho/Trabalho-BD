@@ -88,4 +88,45 @@ public class VendaDAO {
             return false;
         }
     }
+
+
+    public void listarVendas() throws SQLException {
+    String sql = "SELECT v.id_venda, v.data_venda, u.nome AS nome_usuario, " +
+                 "c.nome AS nome_cliente, iv.id_produto, p.nome AS nome_produto, " +
+                 "iv.quantidade, iv.preco_unitario " +
+                 "FROM vendas v " +
+                 "JOIN usuarios u ON v.id_usuario = u.id_usuario " +
+                 "JOIN clientes c ON v.id_cliente = c.id_cliente " +
+                 "JOIN itens_venda iv ON v.id_venda = iv.id_venda " +
+                 "JOIN produtos p ON iv.id_produto = p.id_produto " +
+                 "ORDER BY v.id_venda";
+
+    try (PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        int vendaAtual = -1;
+        while (rs.next()) {
+            int idVenda = rs.getInt("id_venda");
+
+            // Cabeçalho da venda
+            if (idVenda != vendaAtual) {
+                vendaAtual = idVenda;
+                System.out.println("\n==============================");
+                System.out.println("Venda ID: " + idVenda);
+                System.out.println("Data: " + rs.getDate("data_venda"));
+                System.out.println("Usuário: " + rs.getString("nome_usuario"));
+                System.out.println("Cliente: " + rs.getString("nome_cliente"));
+                System.out.println("Itens:");
+            }
+
+            // Itens da venda
+            System.out.printf("  - Produto: %s (ID %d), Quantidade: %d, Preço Unit.: R$ %.2f\n",
+                    rs.getString("nome_produto"),
+                    rs.getInt("id_produto"),
+                    rs.getInt("quantidade"),
+                    rs.getDouble("preco_unitario"));
+        }
+    }
+}
+
 }

@@ -9,11 +9,11 @@ public class FornecedorDAO {
         this.conn = conn;
     }
 
-    public void inserirFornecedor(String nome, String cnpj) throws SQLException {
-        String sql = "INSERT INTO fornecedores (nome, cnpj) VALUES (?, ?)";
+    public void inserirFornecedor(String nome, String contato) throws SQLException {
+        String sql = "INSERT INTO fornecedores (nome, contato) VALUES (?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, nome);
-            stmt.setString(2, cnpj);
+            stmt.setString(2, contato);
             stmt.executeUpdate();
             System.out.println("Fornecedor inserido com sucesso.");
         }
@@ -23,10 +23,10 @@ public class FornecedorDAO {
         String sql = "SELECT * FROM fornecedores";
         try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                System.out.printf("ID: %d | Nome: %s | CNPJ: %s\n",
+                System.out.printf("ID: %d | Nome: %s | CONTATO: %s\n",
                         rs.getInt("id_fornecedor"),
                         rs.getString("nome"),
-                        rs.getString("cnpj"));
+                        rs.getString("contato"));
             }
         }
     }

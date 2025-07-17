@@ -14,26 +14,26 @@ public class Main {
 
             while (true) {
                 System.out.println("\n=== MENU PRINCIPAL ===");
-                System.out.println("1. Gerenciar Usuários");
-                System.out.println("2. Gerenciar Funcionários");
-                System.out.println("3. Gerar Relatórios");
+                System.out.println("1. Gerenciar Usuarios");
+                System.out.println("2. Gerenciar Funcionarios");
+                System.out.println("3. Gerar Relatorios");
                 System.out.println("4. Gerenciar Vendas");
-                System.out.println("5. Gerenciar Férias");
+                System.out.println("5. Gerenciar Ferias");
                 System.out.println("6. Gerenciar Compras");
                 System.out.println("7. Gerenciar Fornecedores");
                 System.out.println("8. Gerenciar Produtos");
                 System.out.println("0. Sair");
-                System.out.print("Escolha uma opção: ");
+                System.out.print("Escolha uma opcao: ");
                 int opcao = scanner.nextInt();
 
                 switch (opcao) {
                     case 1:
                         System.out.println("\n=== GERENCIAR USUARIOS ===");
-                        System.out.println("1. Inserir Usuário");
-                        System.out.println("2. Listar Usuários");
+                        System.out.println("1. Inserir Usuario");
+                        System.out.println("2. Listar Usuarios");
                         System.out.println("3. Atualizar Email");
-                        System.out.println("4. Deletar Usuário");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.println("4. Deletar Usuario");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoUsuario = scanner.nextInt();
                         scanner.nextLine();
 
@@ -65,16 +65,17 @@ public class Main {
                                 usuarioDAO.deletarUsuario(idUsuarioDeletar);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("Opcao inválida!");
                         }
+
                         break;
 
                     case 2:
-                        System.out.println("\n=== GERENCIAR FUNCIONaRIOS ===");
-                        System.out.println("1. Inserir Funcionário");
-                        System.out.println("2. Listar Funcionários");
+                        System.out.println("\n=== GERENCIAR FUNCIONARIOS ===");
+                        System.out.println("1. Inserir Funcionario");
+                        System.out.println("2. Listar Funcionarios");
                         System.out.println("3. Atualizar Cargo");
-                        System.out.println("4. Deletar Funcionário");
+                        System.out.println("4. Deletar Funcionario");
                         System.out.print("Escolha uma opção: ");
                         int opcaoFuncionario = scanner.nextInt();
                         scanner.nextLine();
@@ -94,7 +95,7 @@ public class Main {
                                 funcionarioDAO.listarFuncionarios().forEach(System.out::println);
                                 break;
                             case 3:
-                                System.out.print("ID do Funcionário: ");
+                                System.out.print("ID do Funcionario: ");
                                 int idFunc = scanner.nextInt();
                                 scanner.nextLine();
                                 System.out.print("Novo Cargo: ");
@@ -102,12 +103,12 @@ public class Main {
                                 funcionarioDAO.atualizarCargo(idFunc, novoCargo);
                                 break;
                             case 4:
-                                System.out.print("ID do Funcionário: ");
+                                System.out.print("ID do Funcionario: ");
                                 int idExcluir = scanner.nextInt();
                                 funcionarioDAO.deletarFuncionario(idExcluir);
                                 break;
                             default:
-                                System.out.println("Opção inválida!");
+                                System.out.println("Opcao invalida!");
                         }
                         break;
 
@@ -126,7 +127,7 @@ public class Main {
                         System.out.println("11. Produtos com vendas acima da média (consulta aninhada)");
                         System.out.println(
                                 "12. Clientes que não fizeram compras nos últimos 6 meses (consulta aninhada)");
-                        System.out.print("Escolha uma opção: ");
+                        System.out.print("Escolha uma opcao: ");
                         int opcaoRelatorio = scanner.nextInt();
                         scanner.nextLine();
 
@@ -202,8 +203,7 @@ public class Main {
                                     quantidade, precoUnitario);
                             System.out.println(sucesso ? "Venda inserida com sucesso!" : "Falha ao inserir venda.");
                         } else if (opcaoVenda == 2) {
-                            // Código para listar vendas (pode chamar métodos do VendaDAO)
-                            // Pode implementar depois
+                            vendaDAO.listarVendas();
                         } else {
                             System.out.println("Opção inválida!");
                         }
@@ -211,11 +211,11 @@ public class Main {
 
                     case 5:
                         FeriasDAO feriasDAO = new FeriasDAO(conn);
-                        System.out.println("\n=== GERENCIAR FÉRIAS ===");
-                        System.out.println("1. Inserir Férias");
-                        System.out.println("2. Listar Férias");
-                        System.out.println("3. Atualizar Férias");
-                        System.out.println("4. Deletar Férias");
+                        System.out.println("\n=== GERENCIAR FERIAS ===");
+                        System.out.println("1. Inserir Ferias");
+                        System.out.println("2. Listar Ferias");
+                        System.out.println("3. Atualizar Ferias");
+                        System.out.println("4. Deletar Ferias");
                         System.out.print("Escolha uma opção: ");
                         int opcaoFerias = scanner.nextInt();
                         scanner.nextLine();
@@ -245,7 +245,7 @@ public class Main {
                                 feriasDAO.atualizarFerias(idFeriasAtualizar, novaInicio, novaFim);
                                 break;
                             case 4:
-                                System.out.print("ID das Férias: ");
+                                System.out.print("ID das Ferias: ");
                                 int idFeriasDeletar = scanner.nextInt();
                                 feriasDAO.deletarFerias(idFeriasDeletar);
                                 break;
@@ -316,9 +316,9 @@ public class Main {
                             case 1:
                                 System.out.print("Nome: ");
                                 String nomeFornecedor = scanner.nextLine();
-                                System.out.print("CNPJ: ");
-                                String cnpj = scanner.nextLine();
-                                fornecedorDAO.inserirFornecedor(nomeFornecedor, cnpj);
+                                System.out.print("CONTATO: ");
+                                String contato = scanner.nextLine();
+                                fornecedorDAO.inserirFornecedor(nomeFornecedor, contato);
                                 break;
                             case 2:
                                 fornecedorDAO.listarFornecedores();
