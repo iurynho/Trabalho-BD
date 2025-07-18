@@ -1,6 +1,4 @@
-Claro! Aqui está um README completo, baseado no seu modelo, que explica o projeto, configuração, e como compilar e rodar o sistema Java:
 
----
 
 # Sistema de Gestão Empresarial
 
